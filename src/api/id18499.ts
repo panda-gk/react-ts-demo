@@ -1,5 +1,4 @@
 
-      /* eslint-disable */
       /**
       * 抢红包
       * 
@@ -26,10 +25,15 @@
     amount: string;
   };
 }
-    const http: Serve<IReqid18499, any> = (data?) =>  request({
+    
+      const http: Serve<
+        IReqid18499,
+        IResid18499['data']
+      > = (data?) => request({
         method: 'GET',
         url: '/ec/c/operation/mission/helpredenvelope/grab',
-        params: data
-      }) 
-    export default http
-    /* eslint-enable */
+        data: {params: data}
+      }) as Promise<any> 
+      export default http;
+
+      

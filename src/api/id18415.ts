@@ -1,5 +1,4 @@
 
-      /* eslint-disable */
       /**
       * 创建助力红包发起支付
       * 
@@ -52,10 +51,15 @@
   code?: number;
   msg?: string;
 }
-    const http: Serve<IReqid18415, any> = (data?) =>  request({
+    
+      const http: Serve<
+        IReqid18415,
+        IResid18415['data']
+      > = (data?) => request({
         method: 'POST',
         url: '/ec/b/operation/mission/helpredenvelope/create',
         data: data
-      }) 
-    export default http
-    /* eslint-enable */
+      }) as Promise<any> 
+      export default http;
+
+      

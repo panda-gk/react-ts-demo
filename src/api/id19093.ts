@@ -1,5 +1,4 @@
 
-      /* eslint-disable */
       /**
       * 查看直播间红包任务列表
       * 
@@ -35,12 +34,21 @@
      * 2 助力红包 3推广红包
      */
     red_type: number;
+    /**
+     * 当前用户是否抢过该红包，1是未抢，2是已抢
+     */
+    grabbed_flag: number;
   }[];
 }
-    const http: Serve<IReqid19093, any> = (data?) =>  request({
+    
+      const http: Serve<
+        IReqid19093,
+        IResid19093['data']
+      > = (data?) => request({
         method: 'GET',
         url: '/ec/c/operation/mission/redenvelope/list',
-        params: data
-      }) 
-    export default http
-    /* eslint-enable */
+        data: {params: data}
+      }) as Promise<any> 
+      export default http;
+
+      

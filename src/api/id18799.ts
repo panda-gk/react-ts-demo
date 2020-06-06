@@ -1,5 +1,4 @@
 
-      /* eslint-disable */
       /**
       * [废弃]观众通过推广链接进入事件监听
       * 
@@ -23,10 +22,15 @@
   code: number;
   msg: string;
 }
-    const http: Serve<IReqid18799, any> = (data?) =>  request({
+    
+      const http: Serve<
+        IReqid18799,
+        IResid18799['data']
+      > = (data?) => request({
         method: 'POST',
         url: '/ec/c/operation/popularize/listener/into',
         data: data
-      }) 
-    export default http
-    /* eslint-enable */
+      }) as Promise<any> 
+      export default http;
+
+      

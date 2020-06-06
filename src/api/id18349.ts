@@ -1,5 +1,4 @@
 
-      /* eslint-disable */
       /**
       * 新增任务标签
       * 
@@ -20,10 +19,15 @@
     tag_name: string;
   };
 }
-    const http: Serve<IReqid18349, any> = (data?) =>  request({
+    
+      const http: Serve<
+        IReqid18349,
+        IResid18349['data']
+      > = (data?) => request({
         method: 'POST',
         url: '/ec/m/operation/mission/tag/add',
         data: data
-      }) 
-    export default http
-    /* eslint-enable */
+      }) as Promise<any> 
+      export default http;
+
+      

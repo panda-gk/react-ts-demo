@@ -1,5 +1,4 @@
 
-      /* eslint-disable */
       /**
       * 修改任务
       * 
@@ -75,11 +74,18 @@
    */
   business: string;
 }
-    export class IResid18325 {}
-    const http: Serve<IReqid18325, any> = (data?) =>  request({
+    export class IResid18325 {
+  data: {};
+}
+    
+      const http: Serve<
+        IReqid18325,
+        IResid18325['data']
+      > = (data?) => request({
         method: 'POST',
         url: '/ec/m/operation/mission/update',
         data: data
-      }) 
-    export default http
-    /* eslint-enable */
+      }) as Promise<any> 
+      export default http;
+
+      

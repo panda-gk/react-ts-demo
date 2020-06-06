@@ -1,5 +1,4 @@
 
-      /* eslint-disable */
       /**
       * 查看手气
       * 
@@ -45,10 +44,15 @@
     }[];
   };
 }
-    const http: Serve<IReqid18511, any> = (data?) =>  request({
+    
+      const http: Serve<
+        IReqid18511,
+        IResid18511['data']
+      > = (data?) => request({
         method: 'GET',
         url: '/ec/c/operation/mission/helpredenvelope/grab/tops',
-        params: data
-      }) 
-    export default http
-    /* eslint-enable */
+        data: {params: data}
+      }) as Promise<any> 
+      export default http;
+
+      

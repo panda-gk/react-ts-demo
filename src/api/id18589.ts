@@ -1,5 +1,4 @@
 
-      /* eslint-disable */
       /**
       * 助力资格判断
       * 
@@ -17,7 +16,7 @@
   msg?: string;
   data?: {
     /**
-     * 0 代表无资格抢 1代表有资格抢（无资格助力）
+     * 0 代表无资格抢 1代表有资格抢
      */
     help_status: number;
     /**
@@ -28,12 +27,21 @@
      * 0 代表已抢完,1代表未抢完  2 未开抢
      */
     grab_status: number;
+    /**
+     * 0 不可以  1可以
+     */
+    can_help: number;
   };
 }
-    const http: Serve<IReqid18589, any> = (data?) =>  request({
+    
+      const http: Serve<
+        IReqid18589,
+        IResid18589['data']
+      > = (data?) => request({
         method: 'GET',
         url: '/ec/c/operation/mission/helpredenvelope/status',
-        params: data
-      }) 
-    export default http
-    /* eslint-enable */
+        data: {params: data}
+      }) as Promise<any> 
+      export default http;
+
+      

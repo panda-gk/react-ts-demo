@@ -1,5 +1,4 @@
 
-      /* eslint-disable */
       /**
       * 查看红包的助力数
       * 
@@ -21,17 +20,20 @@
     export class IResid18883 {
   code?: number;
   msg?: string;
-  data?: {
-    /**
-     * 助力数
-     */
-    help_count?: number;
-  };
+  /**
+   * 助力数
+   */
+  data?: number;
 }
-    const http: Serve<IReqid18883, any> = (data?) =>  request({
+    
+      const http: Serve<
+        IReqid18883,
+        IResid18883['data']
+      > = (data?) => request({
         method: 'GET',
         url: '/ec/c/operation/mission/helpredenvelope/helpcount',
-        params: data
-      }) 
-    export default http
-    /* eslint-enable */
+        data: {params: data}
+      }) as Promise<any> 
+      export default http;
+
+      

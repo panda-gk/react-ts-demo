@@ -1,5 +1,4 @@
 
-      /* eslint-disable */
       /**
       * 助力红包发放记录
       * 
@@ -29,10 +28,15 @@
     last_id?: number;
   };
 }
-    const http: Serve<IReqid19417, any> = (data?) =>  request({
+    
+      const http: Serve<
+        IReqid19417,
+        IResid19417['data']
+      > = (data?) => request({
         method: 'GET',
         url: '/ec/b/operation/mission/helpredenvelope/list',
-        params: data
-      }) 
-    export default http
-    /* eslint-enable */
+        data: {params: data}
+      }) as Promise<any> 
+      export default http;
+
+      

@@ -1,5 +1,4 @@
 
-      /* eslint-disable */
       /**
       * 查询任务详情
       * 返回示例
@@ -111,10 +110,15 @@
   code: number;
   msg: string;
 }
-    const http: Serve<IReqid18319, any> = (data?) =>  request({
+    
+      const http: Serve<
+        IReqid18319,
+        IResid18319['data']
+      > = (data?) => request({
         method: 'GET',
         url: '/ec/m/operation/mission/detail',
-        params: data
-      }) 
-    export default http
-    /* eslint-enable */
+        data: {params: data}
+      }) as Promise<any> 
+      export default http;
+
+      

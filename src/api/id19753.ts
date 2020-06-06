@@ -1,5 +1,4 @@
 
-      /* eslint-disable */
       /**
       * B端查看助力红包手气
       * 
@@ -7,7 +6,20 @@
       
     import request from '../serve'
     type Serve<T, G> = (data?: T) => Promise<G>
-    export class IReqid19753 {}
+    export class IReqid19753 {
+  /**
+   * 场景类型 写死live
+   */
+  scene_type: string | number;
+  /**
+   * 直播id
+   */
+  scene_id: string | number;
+  /**
+   * 红包id
+   */
+  red_envelope_id: string | number;
+}
     export class IResid19753 {
   code?: number;
   msg?: string;
@@ -36,10 +48,15 @@
     }[];
   };
 }
-    const http: Serve<IReqid19753, any> = (data?) =>  request({
+    
+      const http: Serve<
+        IReqid19753,
+        IResid19753['data']
+      > = (data?) => request({
         method: 'GET',
         url: '/ec/b/operation/mission/helpredenvelope/grab/tops',
-        params: data
-      }) 
-    export default http
-    /* eslint-enable */
+        data: {params: data}
+      }) as Promise<any> 
+      export default http;
+
+      

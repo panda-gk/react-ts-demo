@@ -1,5 +1,4 @@
 
-      /* eslint-disable */
       /**
       * 查询订单是否成功的接口
       * 
@@ -15,15 +14,20 @@
   msg?: string;
   data?: {
     /**
-     * 订单状态 10 待支付，20 失败，30 支付完成
+     * 订单状态 10 待支付，20 支付中，30 支付完成	,40 支付失败.
      */
-    order_status?: string;
+    order_status?: number;
   };
 }
-    const http: Serve<IReqid18433, any> = (data?) =>  request({
+    
+      const http: Serve<
+        IReqid18433,
+        IResid18433['data']
+      > = (data?) => request({
         method: 'GET',
         url: '/ec/b/operation/query/ordersuccess',
-        params: data
-      }) 
-    export default http
-    /* eslint-enable */
+        data: {params: data}
+      }) as Promise<any> 
+      export default http;
+
+      

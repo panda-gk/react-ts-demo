@@ -1,5 +1,4 @@
 
-      /* eslint-disable */
       /**
       * 新建任务
       * 
@@ -86,10 +85,15 @@
     id: string;
   };
 }
-    const http: Serve<IReqid18307, any> = (data?) =>  request({
+    
+      const http: Serve<
+        IReqid18307,
+        IResid18307['data']
+      > = (data?) => request({
         method: 'POST',
         url: '/ec/m/operation/mission/add',
         data: data
-      }) 
-    export default http
-    /* eslint-enable */
+      }) as Promise<any> 
+      export default http;
+
+      

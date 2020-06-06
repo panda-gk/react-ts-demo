@@ -1,5 +1,4 @@
 
-      /* eslint-disable */
       /**
       * 【废弃】查看红包是否被抢完
       * 
@@ -22,10 +21,15 @@
     can_grab?: number;
   };
 }
-    const http: Serve<IReqid18889, any> = (data?) =>  request({
+    
+      const http: Serve<
+        IReqid18889,
+        IResid18889['data']
+      > = (data?) => request({
         method: 'GET',
         url: '/ec/c/operation/mission/redenvelope/cangrab',
-        params: data
-      }) 
-    export default http
-    /* eslint-enable */
+        data: {params: data}
+      }) as Promise<any> 
+      export default http;
+
+      

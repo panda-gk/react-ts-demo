@@ -1,5 +1,4 @@
 
-      /* eslint-disable */
       /**
       * 列出所有标签
       * 
@@ -17,10 +16,15 @@
   };
   code: number;
 }
-    const http: Serve<IReqid18391, any> = (data?) =>  request({
+    
+      const http: Serve<
+        IReqid18391,
+        IResid18391['data']
+      > = (data?) => request({
         method: 'GET',
         url: '/ec/m/operation/mission/tag/list',
-        params: data
-      }) 
-    export default http
-    /* eslint-enable */
+        data: {params: data}
+      }) as Promise<any> 
+      export default http;
+
+      

@@ -1,5 +1,4 @@
 
-      /* eslint-disable */
       /**
       * 直播推广记录
       * 
@@ -59,10 +58,15 @@
   code?: number;
   msg?: string;
 }
-    const http: Serve<IReqid18985, any> = (data?) =>  request({
+    
+      const http: Serve<
+        IReqid18985,
+        IResid18985['data']
+      > = (data?) => request({
         method: 'GET',
         url: '/ec/b/operation/popularize/log/list',
-        params: data
-      }) 
-    export default http
-    /* eslint-enable */
+        data: {params: data}
+      }) as Promise<any> 
+      export default http;
+
+      

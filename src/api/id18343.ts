@@ -1,5 +1,4 @@
 
-      /* eslint-disable */
       /**
       * 复制任务
       * 
@@ -13,12 +12,17 @@
     export class IResid18343 {
   code: number;
   msg: string;
-  field_4: string;
+  data: {};
 }
-    const http: Serve<IReqid18343, any> = (data?) =>  request({
+    
+      const http: Serve<
+        IReqid18343,
+        IResid18343['data']
+      > = (data?) => request({
         method: 'POST',
         url: '/ec/m/operation/mission/copy',
         data: data
-      }) 
-    export default http
-    /* eslint-enable */
+      }) as Promise<any> 
+      export default http;
+
+      

@@ -1,5 +1,4 @@
 
-      /* eslint-disable */
       /**
       * 查询当前推广红包状态
       * 
@@ -43,10 +42,15 @@
   code?: number;
   msg?: string;
 }
-    const http: Serve<IReqid18805, any> = (data?) =>  request({
+    
+      const http: Serve<
+        IReqid18805,
+        IResid18805['data']
+      > = (data?) => request({
         method: 'GET',
         url: '/ec/b/operation/popularize/get/status',
-        params: data
-      }) 
-    export default http
-    /* eslint-enable */
+        data: {params: data}
+      }) as Promise<any> 
+      export default http;
+
+      

@@ -1,5 +1,4 @@
 
-      /* eslint-disable */
       /**
       * b端任务报名
       * 
@@ -13,11 +12,18 @@
    */
   mission_id: string;
 }
-    export class IResid18367 {}
-    const http: Serve<IReqid18367, any> = (data?) =>  request({
+    export class IResid18367 {
+  data: {};
+}
+    
+      const http: Serve<
+        IReqid18367,
+        IResid18367['data']
+      > = (data?) => request({
         method: 'POST',
         url: '/ec/b/operation/mission/apply',
         data: data
-      }) 
-    export default http
-    /* eslint-enable */
+      }) as Promise<any> 
+      export default http;
+
+      

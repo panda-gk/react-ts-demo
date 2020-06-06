@@ -1,5 +1,4 @@
 
-      /* eslint-disable */
       /**
       * [废弃]监听主播关闭直播事件
       * 
@@ -15,10 +14,15 @@
   code?: number;
   msg?: string;
 }
-    const http: Serve<IReqid18817, any> = (data?) =>  request({
+    
+      const http: Serve<
+        IReqid18817,
+        IResid18817['data']
+      > = (data?) => request({
         method: 'POST',
         url: '/ec/b/operation/popularize/listener/close',
         data: data
-      }) 
-    export default http
-    /* eslint-enable */
+      }) as Promise<any> 
+      export default http;
+
+      

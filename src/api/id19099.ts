@@ -1,5 +1,4 @@
 
-      /* eslint-disable */
       /**
       * 查看直播间红包任务列表
       * 
@@ -37,10 +36,15 @@
     grab_status: number;
   }[];
 }
-    const http: Serve<IReqid19099, any> = (data?) =>  request({
+    
+      const http: Serve<
+        IReqid19099,
+        IResid19099['data']
+      > = (data?) => request({
         method: 'GET',
         url: '/ec/b/operation/mission/redenvelope/list',
-        params: data
-      }) 
-    export default http
-    /* eslint-enable */
+        data: {params: data}
+      }) as Promise<any> 
+      export default http;
+
+      

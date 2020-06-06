@@ -1,5 +1,4 @@
 
-      /* eslint-disable */
       /**
       * 删除标签
       * 
@@ -16,11 +15,17 @@
     export class IResid18895 {
   code: number;
   msg: string;
+  data: {};
 }
-    const http: Serve<IReqid18895, any> = (data?) =>  request({
+    
+      const http: Serve<
+        IReqid18895,
+        IResid18895['data']
+      > = (data?) => request({
         method: 'POST',
         url: '/ec/m/operation/mission/tag/delete',
         data: data
-      }) 
-    export default http
-    /* eslint-enable */
+      }) as Promise<any> 
+      export default http;
+
+      

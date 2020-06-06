@@ -1,5 +1,4 @@
 
-      /* eslint-disable */
       /**
       * 生成推广链接事件监听
       * 
@@ -7,22 +6,21 @@
       
     import request from '../serve'
     type Serve<T, G> = (data?: T) => Promise<G>
-    export class IReqid18793 {
-  live_id: string | number;
-  /**
-   * 红包id
-   */
-  red_envelope_id: string | number;
-}
+    export class IReqid18793 {}
     export class IResid18793 {
   data: {};
   code: number;
   msg: string;
 }
-    const http: Serve<IReqid18793, any> = (data?) =>  request({
-        method: 'GET',
+    
+      const http: Serve<
+        IReqid18793,
+        IResid18793['data']
+      > = (data?) => request({
+        method: 'POST',
         url: '/ec/c/operation/popularize/listener/url',
-        params: data
-      }) 
-    export default http
-    /* eslint-enable */
+        data: data
+      }) as Promise<any> 
+      export default http;
+
+      
